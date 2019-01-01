@@ -26,7 +26,7 @@ contract CryptoVox is ERC20Interface {
     uint public decimal = 18;
     
     //total number of tokens available
-    uint private _supply;
+    uint public  supply;
     address private creator;
     
     //token balances using address as key and amount as value
@@ -39,18 +39,18 @@ contract CryptoVox is ERC20Interface {
     event Transfer(address indexed from, address indexed to, uint tokens);
     event Approval(address indexed tokenOwner, address indexed spender, uint tokens);
     
-    constructor(uint _initialSupply) public {
+    constructor() public {
         creator = msg.sender;
-        _supply = _initialSupply;
+        //supply = _initialSupply;
         //store all token supply to the owner
-        balances[creator] = _supply;
+        balances[creator] = supply;
     }
     
     /**
     * @dev all numbers of token 
      */
     function totalSupply() public view returns (uint) {
-        return _supply;    
+        return supply;    
     }
     
     /**
